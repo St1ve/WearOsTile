@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WearOsTile</string>
+    <string name="tile_label">My tile</string>
+</resources>

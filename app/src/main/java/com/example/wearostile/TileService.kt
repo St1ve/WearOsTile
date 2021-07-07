@@ -16,19 +16,21 @@ private const val RESOURCES_VERSION: String = "1"
 class TileService : TileProviderService() {
     override fun onTileRequest(
         requestParams: RequestBuilders.TileRequest
-    ): ListenableFuture<Tile> = Futures.immediateFuture(
-        Tile.builder()
-            .setResourcesVersion(RESOURCES_VERSION)
-            .setTimeline(
-                Timeline.builder().addTimelineEntry(
-                    TimelineEntry.builder().setLayout(
-                        Layout.builder().setRoot(
-                            Text.builder().setText("Hello world!")
-                        )
-                    )
+    ): ListenableFuture<Tile> {
+        val tileLayout = Timeline.builder().addTimelineEntry(
+            TimelineEntry.builder().setLayout(
+                Layout.builder().setRoot(
+                    Text.builder().setText("Hello world!")
                 )
-            ).build()
-    )
+            )
+        )
+
+        return Futures.immediateFuture(
+            Tile.builder()
+                .setResourcesVersion(RESOURCES_VERSION)
+                .setTimeline(tileLayout).build()
+        )
+    }
 
     override fun onResourcesRequest(
         requestParams: RequestBuilders.ResourcesRequest

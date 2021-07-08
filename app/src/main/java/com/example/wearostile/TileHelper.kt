@@ -27,7 +27,7 @@ class TileHelper(
 ) {
     fun buildFlightLayout(text: String, pizzaSlicesNumber: Int): Box = Box.builder()
         .addContent(
-            buildArc(pizzaSlicesNumber.toFloat() / MAX_SLICES_UMBER.toFloat())
+            buildArc(pizzaSlicesNumber.toFloat() / MAX_SLICES_NUMBER.toFloat())
         )
         .addContent(buildTextLayout(text, pizzaSlicesNumber))
         .addContent(
@@ -111,7 +111,7 @@ class TileHelper(
     companion object {
         private const val ARC_START_POSITION: Float = 0f
         private const val ARC_TOTAL_DEGREES: Float = 360f
-        private const val MAX_SLICES_UMBER: Int = 8
+        private const val MAX_SLICES_NUMBER: Int = 8
 
         private val BUTTON_SIZE = dp(48f)
         private val BUTTON_RADIUS = dp(24f)

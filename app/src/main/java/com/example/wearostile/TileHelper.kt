@@ -34,6 +34,7 @@ class TileHelper(
             buildButtonLayout(
                 idImage = ImagesIds.PIZZA,
                 idBtnClick = ButtonsIds.PIZZA,
+                pizzaSlicesNumber = pizzaSlicesNumber,
             )
         )
         .build()
@@ -52,41 +53,48 @@ class TileHelper(
     private fun buildButtonLayout(
         idImage: ImagesIds,
         idBtnClick: ButtonsIds,
+        pizzaSlicesNumber: Int,
     ): Box = Box.builder()
         .setWidth(expand())
         .setHeight(expand())
         .addContent(
-            Image.builder()
-                .setWidth(BUTTON_SIZE)
-                .setHeight(BUTTON_SIZE)
-                .setResourceId(idImage.name)
-                .setModifiers(
-                    ModifiersBuilders.Modifiers.builder()
-                        .setPadding(
-                            ModifiersBuilders.Padding.builder()
-                                .setStart(BUTTON_PADDING)
-                                .setEnd(BUTTON_PADDING)
-                                .setTop(BUTTON_PADDING)
-                                .setBottom(BUTTON_PADDING)
-                        )
-                        .setBackground(
-                            ModifiersBuilders.Background.builder()
-                                .setCorner(
-                                    ModifiersBuilders.Corner.builder().setRadius(BUTTON_RADIUS)
+            Box.builder()
+                .setWidth(BOX_ARC_BUTTON_SIZE)
+                .setHeight(BOX_ARC_BUTTON_SIZE)
+                .addContent(buildArc(pizzaSlicesNumber.toFloat() / MAX_SLICES_NUMBER.toFloat()))
+                .addContent(
+                    Image.builder()
+                        .setWidth(BUTTON_SIZE)
+                        .setHeight(BUTTON_SIZE)
+                        .setResourceId(idImage.name)
+                        .setModifiers(
+                            ModifiersBuilders.Modifiers.builder()
+                                .setPadding(
+                                    ModifiersBuilders.Padding.builder()
+                                        .setStart(BUTTON_PADDING)
+                                        .setEnd(BUTTON_PADDING)
+                                        .setTop(BUTTON_PADDING)
+                                        .setBottom(BUTTON_PADDING)
                                 )
-                                .setColor(
-                                    argb(
-                                        ContextCompat.getColor(
-                                            context,
-                                            R.color.background_btn
+                                .setBackground(
+                                    ModifiersBuilders.Background.builder()
+                                        .setCorner(
+                                            ModifiersBuilders.Corner.builder().setRadius(BUTTON_RADIUS)
                                         )
-                                    )
+                                        .setColor(
+                                            argb(
+                                                ContextCompat.getColor(
+                                                    context,
+                                                    R.color.background_btn
+                                                )
+                                            )
+                                        )
                                 )
-                        )
-                        .setClickable(
-                            ModifiersBuilders.Clickable.builder()
-                                .setId(idBtnClick.name)
-                                .setOnClick(ActionBuilders.LoadAction.builder())
+                                .setClickable(
+                                    ModifiersBuilders.Clickable.builder()
+                                        .setId(idBtnClick.name)
+                                        .setOnClick(ActionBuilders.LoadAction.builder())
+                                )
                         )
                 )
         )
@@ -114,6 +122,7 @@ class TileHelper(
         private const val MAX_SLICES_NUMBER: Int = 8
 
         private val BUTTON_SIZE = dp(48f)
+        private val BOX_ARC_BUTTON_SIZE = dp(56f)
         private val BUTTON_RADIUS = dp(24f)
         private val BUTTON_PADDING = dp(12f)
 

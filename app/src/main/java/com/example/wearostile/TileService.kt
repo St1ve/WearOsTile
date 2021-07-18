@@ -52,7 +52,7 @@ class TileService : TileProviderService() {
         }
 
         val tileHelper = TileHelper(context = this, deviceParameters = deviceParameters)
-        val tileLayout = tileHelper.buildFlightLayout(text, slicesNumber)
+        val tileLayout = tileHelper.buildPizzaLayout(text, slicesNumber)
         val tile = Tile.builder()
             .setResourcesVersion(RESOURCES_VERSION)
             .setTimeline(

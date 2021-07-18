@@ -25,7 +25,7 @@ class TileHelper(
     private val context: Context,
     private val deviceParameters: DeviceParameters,
 ) {
-    fun buildFlightLayout(text: String, pizzaSlicesNumber: Int): Box = Box.builder()
+    fun buildPizzaLayout(text: String, pizzaSlicesNumber: Int): Box = Box.builder()
         .addContent(
             buildArc(pizzaSlicesNumber.toFloat() / MAX_SLICES_NUMBER.toFloat())
         )
